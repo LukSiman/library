@@ -116,4 +116,9 @@ addBookButton.addEventListener('click', () => {
     form.appendChild(addButton);
 
     main.appendChild(form);
+
+    // add esc to get rid of the form
+    // add required fields
+    // add actual object creation
+    // add button functionality
 });
