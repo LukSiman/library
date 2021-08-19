@@ -1,5 +1,26 @@
+let book1 = {
+    title: 'War and Peace',
+    author: 'Leo Tolstoy',
+    pages: 123,
+    isRead: true
+}
+
+let book2 = {
+    title: 'Song of Solomon',
+    author: 'Toni Morrison',
+    pages: 456,
+    isRead: false
+}
+
+let book3 = {
+    title: 'Ulysses',
+    author: 'James Joyce',
+    pages: 789,
+    isRead: true
+}
+
 // Array to store book objects
-let myLibrary = [];
+let myLibrary = [book1, book2, book3];
 
 // Constructor for the book object
 function Book(title, author, pages, isRead){
@@ -28,3 +49,9 @@ function addBookToLibrary(){
     myLibrary.push(newBook);
 }
 
+// Loops and displays each book in the array
+function readBooks(){
+    for(let book of myLibrary){
+        console.log(book);
+    }
+}
