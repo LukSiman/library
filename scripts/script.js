@@ -1,3 +1,5 @@
+const table = document.querySelector('table');
+
 let book1 = {
     title: 'War and Peace',
     author: 'Leo Tolstoy',
@@ -53,5 +55,15 @@ function addBookToLibrary(){
 function readBooks(){
     for(let book of myLibrary){
         console.log(book);
+        let row = table.insertRow(-1);
+        let title = row.insertCell(0);
+        let author = row.insertCell(1);
+        let pages = row.insertCell(2);
+        let isRead = row.insertCell(3);
+
+        title.innerHTML = book.title;
+        author.innerHTML = book.author;
+        pages.innerHTML = book.pages;
+        isRead.innerHTML = book.isRead;
     }
 }
