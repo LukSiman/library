@@ -1,4 +1,6 @@
 const table = document.querySelector('table');
+const addBookButton = document.querySelector('#addBook');
+const newBooksForm = document.querySelector('#newBookform');
 
 let book1 = {
     title: 'War and Peace',
@@ -25,13 +27,15 @@ let book3 = {
 let myLibrary = [book1, book2, book3];
 
 // Constructor for the book object
-function Book(title, author, pages, isRead){
-    this.title = title
-    this.author = author
-    this.pages = pages
-    this.isRead = isRead
-    this.info = function(){
-        return `${title} by ${author}, ${pages} pages, ${isRead ? 'read' : 'not read yet'}`;
+class Book {
+    constructor(title, author, pages, isRead) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.isRead = isRead;
+        this.info = function () {
+            return `${title} by ${author}, ${pages} pages, ${isRead ? 'read' : 'not read yet'}`;
+        };
     }
 }
 
@@ -65,5 +69,48 @@ function readBooks(){
         author.innerHTML = book.author;
         pages.innerHTML = book.pages;
         isRead.innerHTML = book.isRead;
+
+        pages.style.textAlign = 'center';
+        isRead.style.textAlign = 'center';
     }
 }
+
+addBookButton.addEventListener('click', () => {    
+    let form = document.createElement('form');
+
+    let titleName = document.createElement('p');
+    titleName.innerHTML = 'Title';
+    form.appendChild(titleName);    
+
+    let title = document.createElement('input');
+    form.appendChild(title);
+
+    let authorName = document.createElement('p');
+    authorName.innerHTML = 'Author';
+    form.appendChild(authorName);
+
+    let author = document.createElement('input');
+    form.appendChild(author);
+
+    let pagesName = document.createElement('p');
+    pagesName.innerHTML = 'Pages';
+    form.appendChild(pagesName);
+
+    let pages = document.createElement('input');
+    form.appendChild(pages);
+
+    let isReadName = document.createElement('p');
+    isReadName.innerHTML = 'Have you read this book?';
+    form.appendChild(isReadName);
+
+    let isRead = document.createElement('input');
+    isRead.setAttribute('type', 'checkbox');
+    form.appendChild(isRead);    
+
+    newBooksForm.appendChild(form);
+
+    let addButton = document.createElement('button');
+    addButton.innerHTML = 'Add Book';   
+
+    newBooksForm.appendChild(addButton);
+});
