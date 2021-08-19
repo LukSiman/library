@@ -42,7 +42,12 @@ td, th{
   padding: 10px;
 }
 
-
+input[type='checkbox']{
+  justify-self: start;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+}
 
 /**********************************************
 ID SELECTORS 
@@ -51,6 +56,25 @@ ID SELECTORS
 #addBook{  
   margin: 20px auto;
   display: block;
+}
+
+#newBookForm{
+  width: 60%;
+  margin: auto;
+  padding: 10px;
+  border: 1px solid black;
+  position: relative;
+  top: -20vh;
+  display: grid;
+  grid-template: repeat(5, 1fr) / 1fr 1fr;
+  row-gap: 10px;
+  column-gap: 20px;
+  align-items: center;
+  background-color: azure;
+}
+
+#finishBookAdd{
+  grid-column: span 2;
 }
 
 /**********************************************

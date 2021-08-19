@@ -1,6 +1,7 @@
 const table = document.querySelector('table');
 const addBookButton = document.querySelector('#addBook');
-const newBooksForm = document.querySelector('#newBookform');
+//const newBooksForm = document.querySelector('#newBookform');
+const main = document.querySelector('main');
 
 let book1 = {
     title: 'War and Peace',
@@ -75,8 +76,10 @@ function readBooks(){
     }
 }
 
-addBookButton.addEventListener('click', () => {    
-    let form = document.createElement('form');
+// Add a DOM form for adding new books
+addBookButton.addEventListener('click', () => {       
+    let form = document.createElement('div');
+    form.setAttribute('id', 'newBookForm');
 
     let titleName = document.createElement('p');
     titleName.innerHTML = 'Title';
@@ -107,10 +110,10 @@ addBookButton.addEventListener('click', () => {
     isRead.setAttribute('type', 'checkbox');
     form.appendChild(isRead);    
 
-    newBooksForm.appendChild(form);
-
     let addButton = document.createElement('button');
-    addButton.innerHTML = 'Add Book';   
+    addButton.setAttribute('id', 'finishBookAdd');
+    addButton.innerHTML = 'Add Book';  
+    form.appendChild(addButton);
 
-    newBooksForm.appendChild(addButton);
+    main.appendChild(form);
 });
