@@ -9,12 +9,34 @@ GLOBAL VARIABLES
 HTML SELECTORS
 **********************************************/
 
-html {
+html{
     box-sizing: border-box;
 }
 
   *, *:before, *:after {
     box-sizing: inherit;
+}
+
+main{
+  margin: auto;
+  width: 60%;
+}
+
+h1{
+  text-align: center;
+}
+
+h1, h2{
+  margin: 10px 0px 10px 0px;
+}
+
+table{
+  width: 100%;
+
+}
+
+table, th, td {
+  border: 1px solid black;
 }
 
 /**********************************************
