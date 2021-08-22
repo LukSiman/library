@@ -59,7 +59,6 @@ function addBookToLibrary(){
 // Loops and displays each book in the array
 function readBooks(){
     for(let book of myLibrary){
-        console.log(book);
         let row = table.insertRow(-1);
         let title = row.insertCell(0);
         let author = row.insertCell(1);
@@ -117,8 +116,17 @@ addBookButton.addEventListener('click', () => {
 
     main.appendChild(form);
 
-    // add esc to get rid of the form
+
     // add required fields
     // add actual object creation
     // add button functionality
+});
+
+document.addEventListener('keydown', function(event){
+	if(event.key === 'Escape'){
+        let form = document.getElementById('newBookForm');
+        if(form !== null){
+            main.removeChild(form);
+        }        
+	}
 });
