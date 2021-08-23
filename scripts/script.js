@@ -1,4 +1,3 @@
-const table = document.querySelector('table');
 const addBookButton = document.querySelector('#addBook');
 const main = document.querySelector('main');
 
@@ -41,72 +40,75 @@ class Book {
 }
 
 // Add a DOM form for adding new books
-addBookButton.addEventListener('click', () => {       
-    let form = document.createElement('form');
+addBookButton.addEventListener('click', () => {
+    const form = document.createElement('form');
     form.setAttribute('onSubmit', 'return false');
     form.setAttribute('id', 'newBookForm');
 
-    let titleName = document.createElement('p');
+    const titleName = document.createElement('p');
     titleName.innerHTML = 'Title';
-    form.appendChild(titleName);    
+    form.appendChild(titleName);
 
-    let title = document.createElement('input');
+    const title = document.createElement('input');
     title.setAttribute('type', 'text');
     title.required = true;
     form.appendChild(title);
 
-    let authorName = document.createElement('p');
+    const authorName = document.createElement('p');
     authorName.innerHTML = 'Author';
     form.appendChild(authorName);
 
-    let author = document.createElement('input');
+    const author = document.createElement('input');
     author.setAttribute('type', 'text');
     author.required = true;
     form.appendChild(author);
 
-    let pagesName = document.createElement('p');
+    const pagesName = document.createElement('p');
     pagesName.innerHTML = 'Pages';
     form.appendChild(pagesName);
 
-    let pages = document.createElement('input');
+    const pages = document.createElement('input');
     pages.setAttribute('type', 'number');
     pages.required = true;
     form.appendChild(pages);
 
-    let isReadName = document.createElement('p');
+    const isReadName = document.createElement('p');
     isReadName.innerHTML = 'Have you read this book?';
     form.appendChild(isReadName);
 
-    let isRead = document.createElement('input');
+    const isRead = document.createElement('input');
     isRead.setAttribute('type', 'checkbox');
-    form.appendChild(isRead);    
+    form.appendChild(isRead);
 
-    let addButton = document.createElement('input');
-    addButton.setAttribute('type', 'submit');    
+    const addButton = document.createElement('input');
+    addButton.setAttribute('type', 'submit');
     addButton.setAttribute('id', 'finishBookAdd');
-    addButton.value = 'Add Book';  
+    addButton.value = 'Add Book';
     form.appendChild(addButton);
 
     main.appendChild(form);
 
-    addButton.addEventListener('click', () => {    
-        if((title.value !== '') && (author.value != '') && (pages.value !== '')){   
+    addButton.addEventListener('click', () => {
+        if ((title.value !== '') && (author.value != '') && (pages.value !== '')) {
             addBookToLibrary(title.value, author.value, pages.value, isRead.checked)
             main.removeChild(form);
             readBooks();
         }
-    });    
+    });
 });
 
 // Add book to the library array
-function addBookToLibrary(title, author, pages, isRead){
+function addBookToLibrary(title, author, pages, isRead) {
     let newBook = new Book(title, author, pages, isRead);
     myLibrary.push(newBook);
 }
 
 // Loops and displays each book in the array
-function readBooks(){
-    for(let book of myLibrary){
+function readBooks() {
+    const table = document.querySelector('table');
+    removeTableRows(table);
+
+    for (let book of myLibrary) {
         let row = table.insertRow(-1);
         let title = row.insertCell(0);
         let author = row.insertCell(1);
@@ -123,11 +125,19 @@ function readBooks(){
     }
 }
 
-document.addEventListener('keydown', function(event){
-	if(event.key === 'Escape'){
+// Remove all current books in the table
+function removeTableRows(tableName) {
+    while (tableName.childNodes.length > 1) {
+        tableName.removeChild(tableName.lastChild);
+    }
+}
+
+// Removes the generated form if 'Esc" is pressed
+document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape') {
         let form = document.getElementById('newBookForm');
-        if(form !== null){
+        if (form !== null) {
             main.removeChild(form);
-        }        
-	}
+        }
+    }
 });
