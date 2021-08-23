@@ -127,8 +127,9 @@ function readBooks() {
 
 // Remove all current books in the table
 function removeTableRows(tableName) {
-    while (tableName.childNodes.length > 1) {
-        tableName.removeChild(tableName.lastChild);
+    let rowNumber = tableName.rows.length;
+    for(let i = 1; i < rowNumber; i++){
+        tableName.deleteRow(1);
     }
 }
 
