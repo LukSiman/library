@@ -1,30 +1,17 @@
+// Button to add new books
 const addBookButton = document.querySelector('#addBook');
+
+// Main div with the content
 const main = document.querySelector('main');
 
-let book1 = {
-    title: 'War and Peace',
-    author: 'Leo Tolstoy',
-    pages: 123,
-    isRead: true
-}
-
-let book2 = {
-    title: 'Song of Solomon',
-    author: 'Toni Morrison',
-    pages: 456,
-    isRead: false
-}
-
-let book3 = {
-    title: 'Ulysses',
-    author: 'James Joyce',
-    pages: 789,
-    isRead: true
-}
+// Local storage to store the array with book objects 
+let localStorage = window.localStorage;
 
 // Array to store book objects
-let myLibrary = [book1, book2, book3];
-//let myLibrary = [];
+let myLibrary = [];
+
+loadLocalStorage();
+readBooks();
 
 // Constructor for the book object
 class Book {
@@ -103,6 +90,20 @@ function addBookToLibrary(title, author, pages, isRead) {
     myLibrary.push(newBook);
 }
 
+// Loads local storage, creates it if null
+function loadLocalStorage(){
+    if(localStorage.getItem('library') === null){
+        addArrayToStorage();
+    } else {
+        myLibrary = JSON.parse(localStorage.getItem('library'));
+    }    
+}
+
+// Adds the book object array to the local storage
+function addArrayToStorage(){
+    localStorage.setItem('library', JSON.stringify(myLibrary));
+}
+
 // Loops and displays each book in the array
 function readBooks() {
     const table = document.querySelector('table');
@@ -140,10 +141,9 @@ function readBooks() {
         pages.style.textAlign = 'center';
         isRead.style.textAlign = 'center';
         action.style.textAlign = 'center';
+        addArrayToStorage();
     }
 }
-
-readBooks();
 
 // Button controller
 document.addEventListener('click', function(event){
