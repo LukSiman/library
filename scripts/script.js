@@ -108,27 +108,50 @@ function readBooks() {
     const table = document.querySelector('table');
     removeTableRows(table);
 
+    let index = 0;
+
     for (let book of myLibrary) {
+        book.index = index;
         let row = table.insertRow(-1);
         let title = row.insertCell(0);
         let author = row.insertCell(1);
         let pages = row.insertCell(2);
         let isRead = row.insertCell(3);
+        let action = row.insertCell(4);
 
         title.innerHTML = book.title;
         author.innerHTML = book.author;
         pages.innerHTML = book.pages;
         isRead.innerHTML = book.isRead;
 
+        let removeButton = document.createElement('button');
+        removeButton.setAttribute('id', 'removeButton');
+        removeButton.setAttribute('index', index++);
+        removeButton.innerHTML = 'Remove';
+        action.appendChild(removeButton);
+
+
         pages.style.textAlign = 'center';
         isRead.style.textAlign = 'center';
+        action.style.textAlign = 'center';
     }
 }
+
+readBooks();
+
+// Removes books when button is pressed
+document.addEventListener('click', function(event){
+    if(event.target.id === 'removeButton'){
+        let index = event.target.getAttribute('index');
+        myLibrary.splice(index, 1);
+        readBooks();
+    }
+});
 
 // Remove all current books in the table
 function removeTableRows(tableName) {
     let rowNumber = tableName.rows.length;
-    for(let i = 1; i < rowNumber; i++){
+    for (let i = 1; i < rowNumber; i++) {
         tableName.deleteRow(1);
     }
 }
