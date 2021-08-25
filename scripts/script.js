@@ -125,12 +125,18 @@ function readBooks() {
         isRead.innerHTML = book.isRead;
 
         let removeButton = document.createElement('button');
-        removeButton.setAttribute('id', 'removeButton');
-        removeButton.setAttribute('index', index++);
+        removeButton.setAttribute('class', 'removeButton');
+        removeButton.setAttribute('index', index);
         removeButton.innerHTML = 'Remove';
         action.appendChild(removeButton);
 
+        let readButton = document.createElement('button');
+        readButton.setAttribute('class', 'readButton');
+        readButton.setAttribute('index', index);
+        readButton.innerHTML = 'Change status';
+        action.appendChild(readButton);
 
+        index++;
         pages.style.textAlign = 'center';
         isRead.style.textAlign = 'center';
         action.style.textAlign = 'center';
@@ -139,14 +145,33 @@ function readBooks() {
 
 readBooks();
 
-// Removes books when button is pressed
+// Button controller
 document.addEventListener('click', function(event){
-    if(event.target.id === 'removeButton'){
-        let index = event.target.getAttribute('index');
-        myLibrary.splice(index, 1);
-        readBooks();
+    let index = event.target.getAttribute('index');
+    let eventClass = event.target.className;
+
+    switch(eventClass){
+        case 'removeButton':
+            removeBook(index);
+            break;
+        case 'readButton':
+            changeStatus(index);
+            break;
     }
 });
+
+// Removes books when button is pressed
+function removeBook(index){
+    myLibrary.splice(index, 1);
+    readBooks();
+}
+
+// Change book read status
+function changeStatus(index){
+    Book = myLibrary[index];
+    Book.isRead === true ? Book.isRead = false : Book.isRead = true;
+    readBooks();
+}
 
 // Remove all current books in the table
 function removeTableRows(tableName) {
