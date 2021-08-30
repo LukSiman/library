@@ -50,6 +50,7 @@ button{
   color: #005E7A;
   border: 3px solid #f07167;
   font-weight: bold;
+  font-size: 18px;
 }
 
 button:hover{
@@ -93,6 +94,7 @@ td:last-child{
 
 th{
   font-weight: 700;
+  background-color: #FCAB5F;
 }
 
 input[type='checkbox']{
@@ -130,8 +132,10 @@ ID SELECTORS
 #addBook{  
   margin: 20px auto;
   display: block;
-  padding: 5px 15px 5px 15px;
-  font-size: 16px;
+  padding: 10px 20px 10px 20px;
+  font-size: 18px;
+  text-align: center;
+  border-radius: 5px;
 }
 
 #addBook:active{
