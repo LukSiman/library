@@ -151,6 +151,10 @@ ID SELECTORS
   transform: scale(1.1);
 }
 
+#addBook:hover{
+  background-color: #FCFAC5;
+}
+
 #newBookForm{
   width: 60%;
   max-width: 550px;
@@ -164,7 +168,7 @@ ID SELECTORS
   row-gap: 10px;
   column-gap: 20px;
   align-items: center;
-  background-color: #fed9b7;
+  background-color: #FDC087;
   font-weight: bold;
   border-radius: 10px;
 }
