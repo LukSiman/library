@@ -14,6 +14,8 @@ html{
   box-sizing: border-box;
   font-family: 'Lato', sans-serif;
   font-size: 18px;
+  background-color: #fdfcdc;
+  color: #005E7A;
 }
 
 *, *:before, *:after {
@@ -23,7 +25,7 @@ html{
 main{
   margin: auto;
   margin-top: 10vh;
-  width: 60%;
+  width: 80%;
 }
 
 h1, h2{
@@ -43,16 +45,50 @@ h2{
   font-size: 25px;
 }
 
+button{
+  background-color: #FDCA9B;
+  color: #005E7A;
+  border: 3px solid #f07167;
+  font-weight: bold;
+}
+
+button:hover{
+  background-color: #FDFCDC;
+}
+
 table{
   width: 100%;
+  background-color: #fed9b7;
+  height: 1px;
 }
 
 table, th, td {
-  border: 1px solid black;
+  border: 3px solid #f07167;
 }
 
 td, th{
   padding: 10px;
+  vertical-align: middle;
+}
+
+td:first-child, td:nth-child(2){
+  min-width: 300px;
+  max-width: 300px;
+  word-wrap: break-word;
+}
+
+td:nth-child(3), td:nth-child(4){
+  min-width: 100px;
+  max-width: 100px;
+  word-wrap: break-word;
+}
+
+td:last-child{
+  min-width: 200px;
+  max-width: 200px;
+  padding: 0px;  
+  height: 100%;
+  background-color: #FDCA9B;
 }
 
 th{
@@ -67,10 +103,9 @@ input[type='checkbox']{
 }
 
 footer{
-  position: absolute;
   left: 0;
   right: 0;
-  bottom: 30px; 
+  margin-bottom: 20px;
   z-index: -1;
 }
 
@@ -95,13 +130,19 @@ ID SELECTORS
 #addBook{  
   margin: 20px auto;
   display: block;
+  padding: 5px 15px 5px 15px;
+  font-size: 16px;
+}
+
+#addBook:active{
+  transform: scale(1.1);
 }
 
 #newBookForm{
   width: 60%;
   margin: auto;
   padding: 10px;
-  border: 1px solid black;
+  border: 3px solid #f07167;
   position: relative;
   top: -10vh;
   display: grid;
@@ -109,17 +150,47 @@ ID SELECTORS
   row-gap: 10px;
   column-gap: 20px;
   align-items: center;
-  background-color: azure;
+  background-color: #fed9b7;
+  font-weight: bold;
+  border-radius: 10px;
 }
 
 #finishBookAdd{
   grid-column: span 2;
+  padding: 5px 0px 5px 0px;
+  border: 3px solid #f07167;
+  background-color: #FDCA9B;
+  font-weight: bold;
+  font-size: 16px;
+  color: #005E7A;
+  border-radius: 10px;
+}
+
+#finishBookAdd:hover{
+  background-color: #FDFCDC;
+}
+
+#finishBookAdd:active{
+  transform: scale(0.9);
 }
 
 /**********************************************
 CLASS SELECTORS
 **********************************************/
 
+.removeButton, .readButton{
+  border: none;
+  width: 49%;
+  height: 100%;
+}
+
+.removeButton:active, .readButton:active{
+  transform: scale(0.9);
+}
+
+.removeButton{
+  border-right: 3px solid #f07167;
+}
 
 /**********************************************
 MEDIA 

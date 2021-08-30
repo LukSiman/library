@@ -134,7 +134,7 @@ function readBooks() {
         let readButton = document.createElement('button');
         readButton.setAttribute('class', 'readButton');
         readButton.setAttribute('index', index);
-        readButton.innerHTML = 'Change status';
+        readButton.innerHTML = 'Status';
         action.appendChild(readButton);
 
         index++;
